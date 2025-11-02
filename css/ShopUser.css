@@ -1,0 +1,229 @@
+:root {
+  --primary-color: #0077b6;
+  --muted: #666;
+  --card-bg: #fff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav {
+  background-color: #ffffff;
+  padding: 8px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.user-widget button,
+nav button,
+.import-label {
+  background-color: #fff;
+  color: var(--primary-color);
+  padding: 6px 10px;
+  margin-left: 6px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.content {
+  margin: 18px 20px;
+  padding: 18px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.page-content {
+  display: none;
+  padding: 12px 0;
+}
+.form-container {
+  max-width: 480px;
+  margin: 18px auto;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.04);
+  background: var(--card-bg);
+  text-align: center;
+}
+.form-container h2 {
+  color: var(--primary-color);
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+input,
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.filter-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+.filter-panel input[type="text"] {
+  flex: 1 1 40%;
+  min-width: 160px;
+}
+.filter-panel select {
+  flex: 0 0 180px;
+}
+.filter-panel input[type="number"] {
+  flex: 0 0 120px;
+}
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.product-card {
+  border: 1px solid #e6e6e6;
+  padding: 12px;
+  width: 200px;
+  text-align: center;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+.product-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.product-card h4 {
+  margin: 8px 0;
+  font-size: 1.05em;
+}
+.product-card p {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: 0.95em;
+}
+.pagination-controls {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pagination-controls button {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.cart-item,
+.order {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+}
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+.modal-content {
+  width: min(720px, 95%);
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.modal-close {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Toasts */
+#toast-wrap {
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toast {
+  min-width: 220px;
+  background: #fff;
+  border-left: 4px solid var(--primary-color);
+  padding: 10px 12px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.toast .title {
+  font-weight: 600;
+  color: #222;
+}
+.toast .msg {
+  font-size: 0.95em;
+  color: #444;
+  margin-top: 6px;
+}
+
+/* responsive */
+@media (max-width: 720px) {
+  .product-card {
+    width: 48%;
+  }
+  header,
+  nav,
+  .content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
