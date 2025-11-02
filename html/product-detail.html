@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - Hiệu Sách SGU</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/product-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <script src="../js/main.js" defer></script>
+    <!-- <script src="../js/product-script.js" defer></script> --> <!-- Ghi chú: File này có thể không cần nữa nếu logic đã có trong product-loader.js -->
+    <script src="../js/database.js" defer></script>
+    <script src="../js/product-loader.js" defer></script>
+</head>
+<body>
+    <!-- ... (Phần header của bạn giữ nguyên) ... -->
+    <div id="cart-overlay" class="cart-overlay"></div> 
+        <header class="header">
+            <div class="top-bar">
+                <div class="container">
+                    <div class="top-links">
+                        <span><i class="fas fa-mobile-alt"></i> Tải App</span>
+                        <span><i class="far fa-bell"></i> Thông Báo</span>
+                    </div>
+                    <div class="top-promo">
+                        <p>CHÀO MỪNG BẠN ĐÃ ĐẾN VỚI CỬA HÀNG SÁCH SGU</p>
+                    </div>
+                    <div class="top-contact">
+                        <a href="https://lh3.googleusercontent.com/pw/AP1GczM2LM7D7_E5k7W9EnTYTFsOtOezOM5lq6yGqIL80hKlJFfQ8Vhw4jBixQ5nfyqCeQPJOIhd7cGLyWJVDPekSbLxqq_D9wfVr47qbDgfGJ65QcaVyBbkfuIX4t3gAhgi4isLdnVXrt1GOCewMloKX6pH-g=w818-h928-s-no-gm?authuser=0"><i class="fas fa-headset"></i> Hỗ trợ</a></span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="container">
+                    <a href="../html/index.html" class="logo">Hiệu Sách SGU</a>
+                    <div class="search-area">
+                        <input type="text" placeholder="Tìm kiếm sách...">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <div class="action-item"> <i class="far fa-bell"></i>
+                            <span>Thông Báo</span>
+                        </div>
+                        <a href="login.html" class="action-item" id="account-link">
+                            <i class="far fa-user"></i>
+                            <span>Tài Khoản</span>
+                        </a>
+                    <div class="action-item cart-icon open-cart-trigger">
+                        <a href="#" class="open-cart-trigger cart-icon-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                        <span>Giỏ Hàng</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="product-page-main">
+            <div class="container">
+                <div class="product-detail-layout">
+                    <!-- CỘT TRÁI (HÌNH ẢNH) -->
+                    <div class="product-left-column">
+                        <div class="product-gallery info-box">
+                            <div class="main-image-container">
+                                <!-- HÌNH ẢNH CHÍNH (Sẽ được JS cập nhật) -->
+                                <img src="https://placehold.co/600x600/eee/ccc?text=Đang+Tải" id="main-product-image" alt="Đang tải sản phẩm">
+                            </div>
+                            <!-- THUMBNAILS (Sẽ được JS cập nhật) -->
+                            <div class="thumbnail-container" id="pd-thumbnails">
+                                <img src="https://placehold.co/100x100/eee/ccc?text=..." class="thumbnail active" alt="Thumbnail 1">
+                                <img src="https://placehold.co/100x100/eee/ccc?text=..." class="thumbnail active" alt="Thumbnail 2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CỘT PHẢI (THÔNG TIN) -->
+                    <div class="product-right-column">
+                        <div class="product-info-main info-box">
+                            <!-- TIÊU ĐỀ (Sẽ được JS cập nhật) -->
+                            <h1 class="product-title" id="pd-title">Đang tải tên sản phẩm...</h1>
+                            <div class="product-meta-grid">
+                                <!-- THÔNG TIN META (Sẽ được JS cập nhật) -->
+                                <div class="meta-item"><span>Nhà cung cấp:</span><a href="#" id="pd-supplier">...</a></div>
+                                <div class="meta-item"><span>Thể loại:</span><a href="#" id="pd-category">...</a></div>
+                                <div class="meta-item"><span>Tác giả:</span><a href="#" id="pd-author">...</a></div>
+                                <div class="meta-item"><span>Nhà xuất bản:</span><a href="#" id="pd-publisher">...</a></div>
+                                <div class="meta-item"><span>Hình thức bìa:</span><span id="pd-binding">...</span></div>
+                            </div>
+                            <div class="product-review-summary">
+                                <div class="stars">
+                                    <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                </div>
+                                <!-- ĐÁNH GIÁ/ĐÃ BÁN (Sẽ được JS cập nhật) -->
+                                <a href="#" class="review-count" id="pd-review-count">(... đánh giá)</a>
+                                <span class="sold-count" id="pd-sold-count">Đã bán ...</span>
+                            </div>
+                            <!-- GIÁ (Sẽ được JS cập nhật) -->
+                            <div class="product-price">
+                                <span class="current-price" id="pd-current-price">... đ</span>
+                                <span class="old-price" id="pd-old-price">... đ</span>
+                                <span class="discount-badge" id="pd-discount">...%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="shipping-info info-box">
+                            <div class="product-quantity">
+                                <span>Số lượng:</span>
+                                <div class="quantity-control">
+                                    <button class="quantity-btn" id="decrease-qty">-</button>
+                                    <input type="number" id="quantity-input" value="1" min="1">
+                                    <button class="quantity-btn" id="increase-qty">+</button>
+                                </div>
+                            </div>
+                            <!-- NÚT GIỎ HÀNG (Sẽ được JS cập nhật data- attributes) -->
+                            <button class="btn btn-primary add-to-cart-main" id="pd-add-to-cart-btn"
+                                data-id=""
+                                data-name="Đang tải..."
+                                data-price="0"
+                                data-image="">
+                                Thêm vào giỏ hàng
+                            </button>
+                        </div>
+
+                        <div class="product-specs info-box">
+                            <h2>Thông tin chi tiết</h2>
+                            <!-- BẢNG CHI TIẾT (Sẽ được JS cập nhật) -->
+                            <div class="spec-table">
+                                <div class="spec-row"><span class="spec-label">Mã hàng</span><span class="spec-value" id="spec-sku">...</span></div>
+                                <div class="spec-row"><span class="spec-label">Dự Kiến Có Hàng</span><span class="spec-value" id="spec-releaseDate">...</span></div>
+                                <div class="spec-row"><span class="spec-label">Tên Nhà Cung Cấp</span><a href="#" class="spec-value" id="spec-supplier">...</a></div>
+                                <div class="spec-row"><span class="spec-label">Tác giả</span><span class="spec-value" id="spec-author">...</span></div>
+                                <div class="spec-row"><span class="spec-label">NXB</span><span class="spec-value" id="spec-publisher">...</span></div>
+                                <div class="spec-row"><span class="spec-label">Năm XB</span><span class="spec-value" id="spec-year">...</span></div>
+                                <div class="spec-row"><span class="spec-label">Số trang</span><span class="spec-value" id="spec-pages">...</span></div>
+                                <div class="spec-row"><span class="spec-label">Hình thức</span><span class="spec-value" id="spec-binding">...</span></div>
+                            </div>
+                        </div>
+
+                        <!-- MÔ TẢ (Sẽ được JS cập nhật) -->
+                        <div class="product-description info-box" id="pd-description">
+                            <h2>Mô tả sản phẩm</h2>
+                            <p>Đang tải mô tả...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+    <!-- ... (Phần footer và side-cart của bạn giữ nguyên) ... -->
+    <footer class="footer">
+        <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>Hiệu Sách SGU</h3>
+                        <p>Nơi tri thức bắt đầu và lan tỏa. Cảm ơn bạn đã ghé thăm.</p>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Liên kết nhanh</h3>
+                        <ul>
+                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Điều khoản dịch vụ</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Theo dõi chúng tôi</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="https://youtu.be/dQw4w9WgXcQ?si=AWhig_vOAFDfX0P4"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Hiệu Sách SGU. Đã đăng ký bản quyền. (CÓ MỚI LẠ)</p>
+                </div>
+            </div>
+    </footer>
+
+    <div id="add-to-cart-toast" class="toast-message">
+        <div class="toast-icon-wrapper">
+                <i class="fas fa-check"></i>
+            </div>
+            <p>Sản phẩm đã được thêm vào giỏ hàng.</p>
+    </div>
+
+    <div id="side-cart-container" class="side-cart-container">
+        <div id="cart-view">
+                <div class="side-cart-header">
+                    <h3>Giỏ hàng của bạn</h3>
+                    <button id="close-cart-btn" class="close-btn">&times;</button>
+                </div>
+                <div id="side-cart-body" class="cart-body">
+                    <p class="cart-empty-message">Giỏ hàng của bạn đang trống.</p>
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <strong>Tổng cộng:</strong>
+                        <span id="cart-total-price">0đ</span>
+                    </div>
+                    <button id="go-to-checkout-btn" class="btn checkout-btn">Thanh toán</button>
+                </div>
+            </div>
+            <div id="checkout-view" class="hidden">
+                <div class="side-cart-header">
+                    <h3>Thông tin giao hàng</h3>
+                    <button id="back-to-cart-btn" class="back-btn"><i class="fas fa-arrow-left"></i> Quay lại</button>
+                </div>
+                <div class="checkout-form-body">
+                    <form id="checkout-form">
+                        </form>
+                </div>
+                <div class="cart-footer">
+                    <button type="submit" form="checkout-form" class="btn checkout-btn">ĐẶT HÀNG</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu Sách SGU | Khám Phá Tri Thức</title>
+    <link rel="icon" type="image/png" href="img/SGU_logo.jpg">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <script src="../js/database.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/script.js" defer></script>
+    <script src="../js/product-loader.js" defer></script> 
+
+    <style>
+    a {
+      text-decoration: none;
+    }
+    </style>
+    
+</head>
+<body>
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-links">
+                    <span><i class="fas fa-mobile-alt"></i> Tải App</span>
+                    <span><i class="far fa-bell"></i> Thông Báo</span>
+                </div>
+                <div class="top-promo">
+                    <p>CHÀO MỪNG BẠN ĐÃ ĐẾN VỚI CỬA HÀNG SÁCH SGU</p>
+                </div>
+                <div class="top-contact">
+                    <a href="https://lh3.googleusercontent.com/pw/AP1GczM2LM7D7_E5k7W9EnTYTFsOtOezOM5lq6yGqIL80hKlJFfQ8Vhw4jBixQ5nfyqCeQPJOIhd7cGLyWJVDPekSbLxqq_D9wfVr47qbDgfGJ65QcaVyBbkfuIX4t3gAhgi4isLdnVXrt1GOCewMloKX6pH-g=w818-h928-s-no-gm?authuser=0"><i class="fas fa-headset"></i> Hỗ trợ</a></span>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container">
+                <img src="../img/SGU_logo.jpg" class="imglogo" alt="sgu">
+                <a href="../html/index.html" class="logo">Hiệu Sách SGU</a>
+                <div class="search-wrapper">
+                    <div class="search-area">
+                        <input type="text" placeholder="Tìm kiếm sách..." id="search-input">
+                        <button class="search-btn" id="search-button"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="search-suggestions" id="search-suggestions">
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="action-item"> <i class="far fa-bell"></i>
+                        <span>Thông Báo</span>
+                    </div>
+                    <a href="../html/login.html" class="action-item" id="account-link">
+                        <i class="far fa-user"></i>
+                        <span>Tài Khoản</span>
+                    </a>
+                    <div class="action-item cart-icon open-cart-trigger">
+                        <a href="#" class="open-cart-trigger cart-icon-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                        <span>Giỏ Hàng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="promo-banner-large">
+            <div class="container">
+                <a href="https://dom88.com/?a=2090e519567148e009a2257699784ca1&utm_source=animevietsubapp&utm_medium=topbanner1&utm_campaign=cpd&utm_term=phim"><img src="https://lh3.googleusercontent.com/HC8D6LWYZlD-MDiLGpHnFlftC-FpGORnRyDBypOn4u7jW4529_gzQjiHX5A-W71jbLQPuXhuQuFJK0TwtKwh22w72AriDQOtOPNo_Y85rOIimW1hSOQzjJjN9KBaWw=s0" alt="Banner Khuyến Mãi Lớn 1"></a>
+                <a href="https://qc.gemwin.vip/?a=d0436ef1c5635a77a41ee298b42e0fc8&utm_source=animevietsubapp&utm_medium=topbanner3&utm_campaign=cpd&utm_term=phim"><img src="https://lh3.googleusercontent.com/9QDBt00XWQfJ9BSnblbAJ54I2g9gXN4W-o9ceTD3NqqWEPsHgP29Ti1Xi5zwIOr9ROSvkPDykkFzoJEsgF86MHcTzjmTGwupXrhGpp_62crton35rjvc3UhfTnA=s0" alt="Banner Khuyến Mãi Lớn 2"></a>
+            </div>
+        </div>
+    </header>
+
+     <section class="collections-section">
+        <div class="container">
+            <div class="top-banners">
+                <div class="slider-container">
+                    <button class="prev-btn" onclick="changeSlide(-1)">❮</button>
+                    <div class="slides">
+                        <img src="https://newshop.vn/public/uploads/news/69.jpg" class="slide active" alt="Sách 1">
+                        <img src="https://cungdocsach.vn/wp-content/uploads/2022/01/Sach-hay-uong-tra.jpg" class="slide" alt="Sách 2">
+                        <img src="https://static.ybox.vn/2017/10/4/03e28a76-a8d7-11e7-b53d-56c566ee3692.jpg" class="slide" alt="Sách 3">
+                    </div>
+                    <button class="next-btn" onclick="changeSlide(1)">❯</button>
+                    <div class="dots-container">
+                        <span class="dot active" onclick="currentSlide(0)"></span>
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-banners-grid">
+                <a href="#" class="banner-card"><img src="https://bizbooks.vn/uploads/images/2024/Th%C3%A1ng%207/nen-tang-kinh-te.jpg" alt="Bottom Banner 1"></a>
+                <a href="#" class="banner-card"><img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m9qo94umn5vmfa" alt="Bottom Banner 2"></a>
+                <a href="#" class="banner-card"><img src="https://ehomebooks.vn/wp-content/uploads/2024/12/combo-sach-gui-tuong-lai-xanh-2050.jpg.webp" alt="Bottom Banner 3"></a>
+                <a href="#" class="banner-card"><img src="https://bizbooks.vn/uploads/images/2024/Th%C3%A1ng%207/ldp-thiet-ke-cuoc-doi-dang-song-20240617023637-q5wn6.jpg" alt="Bottom Banner 4"></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-bar-section">
+        <div class="container">
+            <div class="category-bar-grid">
+                
+                <a href="#" class="category-bar-item" data-category="all">
+                    <div class="category-bar-icon bg-blue">
+                        <i class="fas fa-border-all"></i>
+                    </div>
+                    <span class="category-name">Tất Cả</span>
+                </a>
+
+                <a href="#" class="category-bar-item" data-category="Sách Kinh Tế">
+                    <div class="category-bar-icon bg-green">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span class="category-name">Kinh Tế</span>
+                </a>
+
+                <a href="#" class="category-bar-item" data-category="Kỹ Năng Sống">
+                    <div class="category-bar-icon bg-orange">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <span class="category-name">Kỹ Năng Sống</span>
+                </a>
+
+                <a href="#" class="category-bar-item" data-category="Fiction - Thriller">
+                    <div class="category-bar-icon bg-red">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <span class="category-name">Fiction</span>
+                </a>
+
+                <a href="#" class="category-bar-item" data-category="Văn Học">
+                    <div class="category-bar-icon bg-purple">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <span class="category-name">Văn Học</span>
+                </a>
+                <a href="#" class="category-bar-item" data-category="Manga - Comic">
+                    <div class="category-bar-icon bg-purple">
+                        <img src="https://cdn1.fahasa.com/media/wysiwyg/Thang-06-2024/icon_ManngaT06.png" class="manga">
+                    </div>
+                    <span class="category-name">Manga-Lnovel</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+    <main>
+        <section class="featured-books">
+            <div class="container">
+                <h2 id="featured-books-title">Sách Nổi Bật Tuần Này</h2>              
+                <div class="book-grid" id="main-book-grid">
+                    <!-- Sách sẽ được JS chèn vào đây -->
+                </div>
+                
+                <!-- VÙNG CHỨA PHÂN TRANG (MỚI) -->
+                <div id="pagination-container" class="pagination-container">
+                    <!-- Các nút phân trang sẽ được JS chèn vào đây -->
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Hiệu Sách SGU</h3>
+                    <p>Nơi tri thức bắt đầu và lan tỏa. Cảm ơn bạn đã ghé thăm.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản dịch vụ</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1JXhJoUyGf/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/_karaz.z?igsh=MXF0bzFwM3d4OTI2YQ=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtu.be/7pvnUWAdhTY?si=7PPq3liASqy9WDN4"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Hiệu Sách SGU. Đã đăng ký bản quyền. (CÓ MỚI LẠ)</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="add-to-cart-toast" class="toast-message">
+        <div class="toast-icon-wrapper">
+            <i class="fas fa-check"></i>
+        </div>
+        <p>Sản phẩm đã được thêm vào giỏ hàng.</p>
+    </div>
+
+    <div id="side-cart-container" class="side-cart-container">
+        <div id="cart-view">
+            <div class="side-cart-header">
+                <h3>Giỏ hàng của bạn</h3>
+                <button id="close-cart-btn" class="close-btn">×</button>
+            </div>
+            <div id="side-cart-body" class="cart-body">
+                <p class="cart-empty-message">Giỏ hàng của bạn đang trống.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <strong>Tổng cộng:</strong>
+                    <span id="cart-total-price">0đ</span>
+                </div>
+                <button id="go-to-checkout-btn" class="btn checkout-btn">
+                    Thanh toán
+                </button>
+            </div>
+        </div>
+        <div id="checkout-view" class="hidden">
+             </div> 
+        <div id="checkout-modal" class="checkout-modal-container">
+            <div class="checkout-modal-content">
+                <div class="checkout-modal-header">
+                    <h3 id="checkout-modal-title">Thông tin giao hàng</h3>
+                    <button id="close-checkout-modal-btn" class="close-btn">×</button>
+                </div>
+
+                <div class="checkout-form-body">
+                    <form id="checkout-form">
+                        <div class="form-group-full"><input type="text" name="ho_ten" placeholder="Họ và tên" required></div>
+                        <div class="checkout-form-grid">
+                            <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
+                            <div class="form-group"><input type="tel" name="so_dien_thoai" placeholder="Số điện thoại" required></div>
+                        </div>
+                        <div class="form-group-full"><input type="text" name="dia_chi" placeholder="Địa chỉ" required></div>
+                        <div class="checkout-form-grid">
+                            <div class="form-group"><input type="text" placeholder="Phường/Xã" required></div>
+                            <div class="form-group"><input type="text" placeholder="Quận/Huyện" required></div>
+                        </div>
+                        <div class="form-group-full"><input type="text" placeholder="Tỉnh/Thành phố" required></div>
+                        <h4 class="payment-title">Phương thức thanh toán</h4>
+                        <label class="form-radio">
+                            <input type="radio" name="payment-method" value="cod" checked> Thanh toán khi nhận hàng
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="payment-method" value="bank"> Chuyển khoản ngân hàng
+                        </label>
+                    </form>
+                        <div id="checkout-review-view" class="hidden">
+                            <div class="review-section">
+                                <strong>Thông tin giao hàng:</strong>
+                                <div id="review-shipping-info">
+                                    </div>
+                            </div>
+                            <div class="review-section">
+                                <strong>Chi tiết đơn hàng:</strong>
+                                <div id="review-item-list" class="cart-body">
+                                    </div>
+                            </div>
+                            <div id="review-total" class="cart-total">
+                                </div>
+                        </div>
+                </div>
+                
+                <div class="cart-footer">
+                    <button type="submit" form="checkout-form" id="go-to-review-btn" class="btn checkout-btn">
+                        Xem Lại Đơn Hàng
+                    </button>
+
+                    <button id="back-to-form-btn" class="btn btn-secondary hidden">
+                        Quay Lại
+                    </button>
+                    <button id="confirm-order-btn" class="btn checkout-btn hidden">
+                        Xác Nhận Đặt Hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
