@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin - Hiệu Sách SGU</title>
+        <link rel="icon" type="image/img" href="../img/SGU_logo.jpg">
+        <link rel="stylesheet" href="../css/admin-style.css">
+        <link rel="stylesheet" href="../themify-icons/themify-icons.css">
+    </head>
+    <div>
+
+
+        <div id="login-screen" style="display: block;"> 
+            <div id="login-container">
+                <h2>Đăng Nhập Quản Trị</h2>
+                <form id="login-form">
+                    <div class="input-group">
+                        <!-- <label for="username">Tài Khoản:</label> -->
+                        <input type="text" id="username" required placeholder="Tên Đăng Nhập">
+                    </div>
+                    <div class="input-group">
+                        <!-- <label for="password">Mật Khẩu:</label> -->
+                        <input type="password" id="password" required placeholder="Mật Khẩu">
+                    </div>
+                    <p id="error-message" class="error-text"></p>
+                    <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+                </form>
+            </div>
+        </div>
+        
+        <div id="admin-panel" style="display: none;"> 
+
+            <div id="app-container">
+
+                <!-- Begin Sidebar -->
+                <aside id="sidebar">
+                    <div class="logo">
+                        <i class="ti-panel"></i>
+                        Hiệu Sách SGU
+                    </div>
+
+
+
+                    <div id="main-nav">
+                        <button class="function-nav-btn btn" data-target="page-dashboard">Tổng Quan</button>
+                        <button class="function-nav-btn btn" data-target="user-function">Quản Lý Người Dùng</button>
+                        <button class="function-nav-btn btn" data-target="product-category">Quản Lý Loại Sản Phẩm</button>
+                        <button class="function-nav-btn btn" data-target="product-detail">Quản Lý Danh Mục Sản Phẩm</button>
+                        <button class="function-nav-btn btn" data-target="product-import">Quản Lý Nhập Sản Phẩm</button>
+                        <button class="function-nav-btn btn" data-target="product-price">Quản Lý Giá Bán</button>
+                        <button class="function-nav-btn btn" data-target="product-order">Quán Lý Đơn Đặt Hàng</button>
+                        <button class="function-nav-btn btn" data-target="product-manage">Quản Lý Số Lượng Tồn Kho</button>
+                    </div>
+                    
+
+
+                    <div id="login-function">
+                        <a id="logout-link" href="../index.html">Đăng Xuất</a>
+                    </div>
+                </aside>
+                <!-- End Sidebar -->
+
+
+
+                <!-- Begin Main Content -->
+                <div id="main-content">
+
+                    <header id="main-content-header">
+                        Bảng Chức Năng Chính    
+                    </header>
+
+
+                    <div id="page-dashboard" class="function-area active-function-area">
+                        
+                        <h1 style="margin-bottom: 20px; text-align: center;">Tổng Quan</h1>
+                        
+                        <div class="stat-grid">
+                            <div class="stat-card">
+                                <h3><i class="dashboard-heading"></i> Khách Hàng</h3>
+                                <p id="stat-customers">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3><i class="dashboard-heading"></i> Sản Phẩm</h3>
+                                <p id="stat-products">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3><i class="dashboard-heading"></i> Đơn Hàng Mới</h3>
+                                <p id="stat-new-orders">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3><i class="dashboard-heading"></i> Sắp Hết Hàng</h3>
+                                <p id="stat-low-stock">0</p>
+                            </div>
+                        </div>
+                        <!-- Thêm biểu đồ hoặc báo cáo nhanh ở đây -->
+                    </div>
+
+
+                    <div class="function-area " id="user-function">
+
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Quản lý Người dùng</h3>
+                            <button class="btn add-btn">Thêm</button>
+                        </div>
+
+                        <div class="wrap">
+
+
+                            <div class="list-heading">
+                                <h4>ID</h4>
+                                <h4>Tài Khoản</h4>
+                                <h4>Mật Khẩu</h4>
+                                <h4>Thao Tác</h4>
+                            </div>
+
+                            <div class="list-items">
+                                <!-- <div class="item" id="1">
+                                    <p>1</p>
+                                    <p>NhâtAn</p>
+                                    <p id="pass-1">12345678</p>
+                                    <div class="btn-list">
+                                        <button class="btn reset-btn blue" data-target="pass-1">Reset mật khẩu</button>
+                                        <button class="btn lock-btn red" data-target="1">Khóa</button>
+                                    </div>
+                                </div> -->
+                                <!-- Chèn thêm user qua js ở đây -->
+                            </div>
+                            
+                        </div>
+
+                        <div id="add-user-modal" class="background">
+                        <div id="form-add-user-wrap">
+                            <h3>Thêm Người Dùng Mới</h3>
+                            <form id="add-user-form">
+                                <div class="input-group">
+                                    <input type="text" id="new-username" required placeholder="Tên Đăng Nhập">
+                                </div>
+
+                                <div class="input-group">
+                                    <input type="password" id="new-password" required placeholder="Mật Khẩu">
+                                </div>
+                                
+                                <p id="add-user-error-message" class="error-text"></p>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn blue">Thêm Người Dùng</button>
+                                    <button type="button" class="btn close-modal-btn red">Đóng</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="function-area" id="product-category">
+
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Quản lý Loại Sản phẩm</h3>
+                            <button class="btn add-btn">Thêm Loại</button>
+                        </div>
+                        
+
+                        <div class="wrap">
+
+
+                            <div class="list-heading">
+                                <h4>ID</h4>
+                                <h4>Tên Loại</h4>
+                                <h4>Mô tả</h4>
+                                <h4>Thao Tác</h4>
+                            </div>
+
+                            <div class="list-items">
+                                <!-- <div class="item" id="1">
+                                    <p>1</p>
+                                    <p>Sách Giáo Khoa<s/p>
+                                    <p>Phục vụ mục đích học tập và giải trí sau những giờ chơi điện tử căng thẳng</p>
+                                    <div class="btn-list">
+                                        <button class="btn adjust-btn blue" data-target="pass-1">Sửa</button>
+                                        <button class="btn delete-btn red" data-target="1">Xóa</button>
+                                    </div>
+                                </div> -->
+                                <!-- Chèn thêm product-category qua js ở đây -->
+                            </div>
+                            
+                        </div>
+
+                        <div class="background" id="category-modal">
+                            <div id="form-category-wrap">
+                                <h3 id="category-form-title">Thêm Loại Sản Phẩm</h3>
+                                <form id="category-form">
+                                    <div class="input-group">
+                                        <input type="number" id="category-id" required placeholder="ID (Ví dụ: 1, 2, 3...)">
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" id="category-name" required placeholder="Tên Loại (Ví dụ: Sách Kỹ Năng)">
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" id="category-description" required placeholder="Mô tả">
+                                    </div>
+                                    
+                                    <p id="category-error-message" class="error-text"></p>
+
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn blue" id="category-submit-btn">Thêm</button>
+                                        <button type="button" class="btn close-modal-btn red">Đóng</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="function-area" id="product-detail">
+                        
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Danh mục Sản phẩm</h3>
+                            <button class="btn add-btn">Thêm Sản phẩm</button>
+                        </div>
+                        
+
+                        <div class="wrap">
+
+
+                            <div class="list-heading">
+                                <h4>ID</h4>
+                                <h4>Tên Loại</h4>
+                                <h4>Tên</h4>
+                                <h4>Mô tả</h4>
+                                <h4>Thao Tác</h4>
+                            </div>
+
+                            <div class="list-items">
+                                <!-- <div class="item" id="1">
+                                    <p>1</p>
+                                    <p>Sách Giáo Khoa</p>
+                                    <p>Sách Toán Học Cấp 1</p>
+                                    <p>Phục vụ mục đích học tập và giải trí </p>
+                                    <div class="btn-list">
+                                        <button class="btn img-btn green">Hiện ảnh</button>
+                                        <button class="btn adjust-btn blue" data-target="pass-1">Sửa</button>
+                                        <button class="btn delete-btn red" data-target="1">Xóa</button>
+                                    </div>
+                                </div> -->
+                                
+                                <!-- Chèn thêm product-detail qua js ở đây -->
+                            </div>
+
+                        </div>
+
+                        <div class="background" id="product-detail-modal">
+                            <div id="form-product-detail-wrap" class="scrollable">
+                                <form id="product-detail-form">
+                                    <h3 id="product-form-title">Thêm Sản Phẩm Mới</h3>
+
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="id-product">ID Sản Phẩm (ví dụ: 01, 02)</label>
+                                            <input type="text" id="id-product" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="category">Loại (category)</label>
+                                            <input type="text" id="category" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <label for="title-product">Tên Sản Phẩm (title)</label>
+                                        <input type="text" id="title-product" required>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="author">Tác giả (author)</label>
+                                            <input type="text" id="author">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="supplier">Nhà cung cấp (supplier)</label>
+                                            <input type="text" id="supplier">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="publisher">Nhà xuất bản (publisher)</label>
+                                            <input type="text" id="publisher">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="current-price">Giá Bán (currentPrice)</label>
+                                            <input type="number" id="current-price" value="0">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="old-price">Giá Gốc (oldPrice)</label>
+                                            <input type="number" id="old-price" value="0">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="discount">Chiết khấu (discount) (%)</label>
+                                            <input type="number" id="discount" value="0">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="sku">SKU</label>
+                                            <input type="text" id="sku">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="year">Năm (year)</label>
+                                            <input type="number" id="year">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="pages">Số trang (pages)</label>
+                                            <input type="number" id="pages">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="binding">Hình thức bìa (binding)</label>
+                                            <input type="text" id="binding" placeholder="Bìa Mềm / Bìa Cứng">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-section">
+                                        <div class="input-group">
+                                            <label for="picture-product">Ảnh Chính (mainImage)</label>
+                                            <input type="file" id="picture-product" accept="image/*">
+                                            <small>Để trống khi "Sửa" nếu không muốn đổi ảnh.</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <div class="input-group">
+                                            <label for="des-product">Mô Tả (description)</label>
+                                            <textarea id="des-product" rows="6"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <p id="product-error-message" class="error-text"></p>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn add-btn" id="product-submit-btn">Thêm sản phẩm</button>
+                                        <button type="button" class="btn close-btn red">Đóng</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="function-area" id="product-import">
+                        
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Nhập Sản phẩm</h3>
+                            <div class="btn-list">
+                                <button class="btn add-btn">Thêm</button>
+                                <button class="btn search-btn">Tìm</button>
+                            </div>
+                        </div>
+                        
+
+                        <div class="wrap">
+
+
+                            <div class="list-heading">
+                                <h4>ID Phiếu</h4>
+                                <h4>Ngày nhập</h4>
+                                <h4>Tổng tiền</h4>
+                                <h4>Trạng thái</h4>
+                                <h4>Ghi chú</h4>
+                                <h4>Thao Tác</h4>
+                            </div>
+
+                            <div class="list-items">
+                                <!-- <div class="item" id="1">
+                                    <p>9087</p>
+                                    <p>15/08/2020</p>
+                                    <p>1500000</p>
+                                    <p>Hoàn thành</p>
+                                    <p>Ghi chú gì đó</p>
+                                    <div class="btn-list">
+                                        <button class="btn adjust-btn blue" data-target="pass-1">Sửa</button>
+                                        <button class="btn delete-btn red" data-target="1">Xóa</button>
+                                    </div>
+                                </div> -->
+                                <!-- Chèn thêm product-import qua js ở đây -->
+                            </div>
+                            
+                        </div>
+
+                        <div class="background" id="import-modal">
+                            <div id="form-import-wrap" class="scrollable">
+                                <h3 id="import-form-title">Tạo Phiếu Nhập Sản Phẩm</h3>
+                                
+                                <form id="import-form-master">
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="import-id">ID Phiếu</label>
+                                            <input type="number" id="import-id" required placeholder="Ví dụ: 9088">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="import-date">Ngày Nhập</label>
+                                            <input type="date" id="import-date" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="import-status">Trạng Thái</label>
+                                            <select id="import-status" required>
+                                                <option value="Chưa hoàn thành">Chưa hoàn thành</option>
+                                                <option value="Hoàn thành">Hoàn thành</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="import-notes">Ghi Chú</label>
+                                        <textarea id="import-notes" rows="2"></textarea>
+                                    </div>
+                                </form>
+
+                                <hr class="form-divider">
+
+                                <h4 class="form-subtitle">Chi Tiết Sản Phẩm Nhập</h4>
+                                <form id="import-form-detail">
+                                    <div class="form-row">
+                                        <div class="input-group" style="flex: 3;">
+                                            <label for="import-product-select">Chọn Sản Phẩm</label>
+                                            <select id="import-product-select" required></select>
+                                        </div>
+                                        <div class="input-group" style="flex: 1;">
+                                            <label for="import-quantity">Số Lượng</label>
+                                            <input type="number" id="import-quantity" min="1" value="1" required>
+                                        </div>
+                                        <div class="input-group" style="flex: 2;">
+                                            <label for="import-cost-price">Giá Vốn (mỗi SP)</label>
+                                            <input type="number" id="import-cost-price" min="0" required placeholder="Giá nhập...">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn blue btn-full-width" id="add-item-to-import-btn">Thêm sản phẩm vào phiếu</button>
+                                </form>
+
+                                <div class="wrap" id="import-temp-list-wrap">
+                                    <div class="list-heading">
+                                        <h4>Sản Phẩm</h4>
+                                        <h4>Số Lượng</h4>
+                                        <h4>Giá Vốn</h4>
+                                        <h4>Thành Tiền</h4>
+                                        <h4>Xóa</h4>
+                                    </div>
+                                    <div class="list-items" id="import-temp-items">
+                                        </div>
+                                    <div class="total-summary" id="import-total-cost">Tổng Tiền: 0 đ</div>
+                                </div>
+                                
+                                <p id="import-error-message" class="error-text"></p>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn blue" id="save-import-btn">Lưu Phiếu Nhập</button>
+                                    <button type="button" class="btn close-modal-btn red">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="background" id="search-import-modal">
+                            <div id="form-search-import-wrap">
+                                <h3 id="search-import-form-title">Tìm Kiếm Phiếu Nhập</h3>
+                                <form id="search-import-form">
+                                    
+                                    <div class="input-group">
+                                        <label for="search-import-input">Nhập ID, Trạng thái, hoặc Ghi chú</label>
+                                        <input type="text" id="search-import-input" placeholder="Nhập từ khóa...">
+                                        <small>Bỏ trống và nhấn 'Tìm' để hiển thị tất cả.</small>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn blue">Tìm</button>
+                                        <button type="button" class="btn close-modal-btn red">Đóng</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="function-area" id="product-price">
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Thiết lập Lợi nhuận</h3>
+                        </div>
+
+                        <div id="form-profit-wrap">
+                            <form id="profit-setting-form">
+                                
+                                <div class="input-group toggle-mode">
+                                    <p>Áp dụng cho:</p>
+                                    <input type="radio" id="mode-category" name="profit_mode" value="category" checked class="hidden-radio">
+                                    <label for="mode-category" class="toggle-label mode-btn">Theo Loại</label>
+                                    
+                                    <input type="radio" id="mode-product" name="profit_mode" value="product" class="hidden-radio">
+                                    <label for="mode-product" class="toggle-label mode-btn">Theo Sản Phẩm</label>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="target-select" id="target-label">Chọn Loại Sản Phẩm:</label>
+                                    <select id="target-select" required></select>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="profit-value">Tỉ lệ Lợi nhuận (%):</label>
+                                    <input type="number" id="profit-value" min="0" max="100" step="0.01" required placeholder="Ví dụ: 25.5">
+                                </div>
+
+                                <button type="submit" class="btn blue apply-btn">Áp Dụng Tỉ Lệ</button>
+                            </form>                        
+                        </div>
+
+
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Tra cứu giá sản phẩm</h3>
+                            <div class="btn-list">
+                                    <button class="btn search-btn">Tìm</button>
+                            </div>                        
+                        </div>
+
+                        <div class="wrap">
+
+
+                            <div class="list-heading">
+                                <h4>ID Sản phẩm</h4>
+                                <h4>Tên Sản phẩm</h4>
+                                <h4>Phân loại</h4>
+                                <h4>Giá vốn</h4>
+                                <h4>% Lợi nhuận</h4>
+                                <h4>Giá bán</h4>
+                            </div>
+
+                            <div class="list-items">
+                                <!-- <div class="item" id="1">
+                                    <p>3</p>
+                                    <p>Dòng chữ tử thần</p>
+                                    <P>Sách giáo khoa</P>
+                                    <p>1500000</p>
+                                    <p>20%</p>
+                                    <p>180000</p>
+                                </div> -->
+                                <!-- Chèn thêm product-price qua js ở đây -->
+                            </div>
+                            
+                        </div>
+
+
+                        <div class="background" id="search-price-modal">
+                            <div id="form-search-price-wrap">
+                                <h3>Tra Cứu Giá Nâng Cao</h3>
+                                <form id="search-price-form">
+                                    
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="min-cost">Giá Vốn (Từ)</label>
+                                            <input type="number" id="min-cost" placeholder="Bỏ trống = 0">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="max-cost">Giá Vốn (Đến)</label>
+                                            <input type="number" id="max-cost" placeholder="Bỏ trống = Vô hạn">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="min-profit">% Lợi Nhuận (Từ)</label>
+                                            <input type="number" id="min-profit" placeholder="Bỏ trống = 0">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="max-profit">% Lợi Nhuận (Đến)</label>
+                                            <input type="number" id="max-profit" placeholder="Bỏ trống = Vô hạn">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="min-sell">Giá Bán (Từ)</label>
+                                            <input type="number" id="min-sell" placeholder="Bỏ trống = 0">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="max-sell">Giá Bán (Đến)</label>
+                                            <input type="number" id="max-sell" placeholder="Bỏ trống = Vô hạn">
+                                        </div>
+                                    </div>
+
+                                    <small>Bỏ trống tất cả các ô và nhấn 'Tìm' để hiển thị lại toàn bộ danh sách.</small>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn blue">Tìm Kiếm</button>
+                                        <button type="button" class="btn close-modal-btn red">Đóng</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="function-area" id="product-order">
+                        
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Quản lý Đơn hàng</h3>
+                            <div class="btn-list">
+                                <button class="btn search-btn">Tra cứu</button>
+                                <button class="btn add-btn">Thêm Đơn</button>
+                            </div>
+                        </div>
+                        
+
+                        <div class="wrap">
+
+
+                            <div class="list-heading">
+                                <h4>ID Đơn</h4>
+                                <h4>Khách Hàng</h4>
+                                <h4>Ngày đặt</h4>
+                                <h4>Tổng tiền</h4>
+                                <h4>Trạng thái</h4>
+                                <h4>Thao Tác</h4>
+                            </div>
+
+                            <div class="list-items">
+                                <!-- <div class="item" id="1">
+                                    <p>1</p>
+                                    <p>Nam</p>
+                                    <p>15/09/2020</p>
+                                    <p>1500000</p>
+                                    <p>Hoàn thành</p>
+                                    <div class="btn-list">
+                                        <button class="btn adjust-btn blue" data-target="pass-1">Sửa</button>
+                                        <button class="btn delete-btn red" data-target="1">Xóa</button>
+                                    </div>
+                                </div> -->
+                                <!-- Chèn thêm product-order qua js ở đây -->
+                            </div>
+
+                            <div class="background" id="order-modal">
+                                <div id="form-order-wrap" class="scrollable">
+                                    <h3 id="order-form-title">Tạo Đơn Hàng Mới</h3>
+                                    
+                                    <form id="order-form-master">
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <label for="order-id">ID Đơn Hàng</label>
+                                                <input type="text" id="order-id" required placeholder="Ví dụ: OD-004">
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="order-customer">Tên Khách Hàng</label>
+                                                <input type="text" id="order-customer" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <label for="order-date">Ngày Đặt</label>
+                                                <input type="date" id="order-date" required>
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="order-status">Trạng Thái</label>
+                                                <select id="order-status" required>
+                                                    <option value="Mới đặt">Mới đặt</option>
+                                                    <option value="Đã xử lý">Đã xử lý</option>
+                                                    <option value="Đã giao">Đã giao</option>
+                                                    <option value="Hủy">Hủy</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <hr class="form-divider">
+
+                                    <h4 class="form-subtitle">Chi Tiết Sản Phẩm Đặt Mua</h4>
+                                    <form id="order-form-detail">
+                                        <div class="form-row">
+                                            <div class="input-group" style="flex: 3;">
+                                                <label for="order-product-select">Chọn Sản Phẩm</label>
+                                                <select id="order-product-select" required></select>
+                                            </div>
+                                            <div class="input-group" style="flex: 1;">
+                                                <label for="order-quantity">Số Lượng</label>
+                                                <input type="number" id="order-quantity" min="1" value="1" required>
+                                            </div>
+                                            <div class="input-group" style="flex: 2;">
+                                                <label for="order-sell-price">Giá Bán (mỗi SP)</label>
+                                                <input type="number" id="order-sell-price" min="0" required placeholder="Giá bán...">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn blue btn-full-width" id="add-item-to-order-btn">Thêm sản phẩm vào đơn</button>
+                                    </form>
+
+                                    <div class="wrap" id="order-temp-list-wrap">
+                                        <div class="list-heading">
+                                            <h4>Sản Phẩm</h4>
+                                            <h4>Số Lượng</h4>
+                                            <h4>Giá Bán</h4>
+                                            <h4>Thành Tiền</h4>
+                                            <h4>Xóa</h4>
+                                        </div>
+                                        <div class="list-items" id="order-temp-items">
+                                            </div>
+                                        <div class="total-summary" id="order-total-amount">Tổng Tiền: 0 đ</div>
+                                    </div>
+                                    
+                                    <p id="order-error-message" class="error-text"></p>
+
+                                    <div class="form-actions">
+                                        <button type="button" class="btn blue" id="save-order-btn">Lưu Đơn Hàng</button>
+                                        <button type="button" class="btn close-modal-btn red">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="background" id="search-order-modal">
+                                <div id="form-search-order-wrap">
+                                    <h3>Tra Cứu Đơn Hàng Nâng Cao</h3>
+                                    <form id="search-order-form">
+                                        
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <label for="search-order-date-from">Từ Ngày</label>
+                                                <input type="date" id="search-order-date-from">
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="search-order-date-to">Đến Ngày</label>
+                                                <input type="date" id="search-order-date-to">
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group">
+                                            <label for="search-order-status">Theo Trạng Thái</label>
+                                            <select id="search-order-status">
+                                                <option value="">Tất cả trạng thái</option>
+                                                <option value="Mới đặt">Mới đặt</option>
+                                                <option value="Đã xử lý">Đã xử lý</option>
+                                                <option value="Đã giao">Đã giao</option>
+                                                <option value="Hủy">Hủy</option>
+                                            </select>
+                                        </div>
+
+                                        <small>Bỏ trống tất cả các ô để xem lại toàn bộ danh sách.</small>
+                                        
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn blue">Tìm</button>
+                                            <button type="button" class="btn close-modal-btn red">Đóng</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="function-area" id="product-manage">
+
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Chi tiết hàng tồn</h3>
+                        </div>
+
+                        <div id="inventory-dropdown-list-wrap">
+                            <div class="inventory-lookup-card">
+                                <div class="lookup-group">
+                                    <label for="product-select">Chọn Sản Phẩm</label>
+                                    <select id="product-select" class="form-control"></select>
+                                </div>
+                                
+                                <div class="lookup-group">
+                                    <label for="current-stock">Tồn Kho Hiện Tại</label>
+                                    <input type="text" id="current-stock" class="form-control" readonly value="0">
+                                </div>
+                            </div>                        
+                        </div>
+
+
+
+                        <div class="heading-wrap">
+                            <h3 class="function-name">Quản lý Số lượng hàng tồn</h3>
+                            <button class="btn search-btn">Tra cứu</button>
+                        </div>
+
+
+                        <div class="wrap">
+
+
+                            <div class="list-heading">
+                                <h4>ID</h4>
+                                <h4>Tên sản phẩm</h4>
+                                <h4>Số lượng nhập</h4>
+                                <h4>Số lượng xuất</h4>
+                                <h4>Số lượng tồn</h4>
+                                <h4>Ngày đặt</h4>
+                                <h4>Ngày xuất</h4>
+                            </div>
+
+                            <div class="list-items">
+                                <!-- <div class="item warn-low-product" id="1">
+                                    <p>1</p>
+                                    <p>Chắc chắn là thằng nam</p>
+                                    <p>300</p>
+                                    <p>250</p>
+                                    <p>5</p>
+                                    <p>15/9/2023</p>
+                                    <p>08/12/2026</p>
+                                </div> -->
+                                <!-- Chèn thêm product-order qua js ở đây -->
+                            </div>
+                            
+                        </div>
+
+                        <div class="background" id="search-inventory-modal">
+                            <div id="form-search-inventory-wrap">
+                                <h3>Tra Cứu Nhập - Xuất - Tồn</h3>
+                                <form id="search-inventory-form">
+                                    
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="search-inv-category">Theo Loại Sản Phẩm</label>
+                                            <select id="search-inv-category">
+                                                <option value="">Tất cả Loại</option>
+                                                </select>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="search-inv-product">Theo Sản Phẩm Cụ Thể</label>
+                                            <select id="search-inv-product">
+                                                <option value="">Tất cả Sản Phẩm</option>
+                                                </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="search-inv-date-from">Từ Ngày</label>
+                                            <input type="date" id="search-inv-date-from">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="search-inv-date-to">Đến Ngày</label>
+                                            <input type="date" id="search-inv-date-to">
+                                        </div>
+                                    </div>
+                                    
+                                    <small>Bỏ trống để xem tổng kết toàn bộ thời gian.</small>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn blue">Tra Cứu</button>
+                                        <button type="button" class="btn close-modal-btn red">Đóng</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+                <!-- End Main Content -->
+
+            </div>
+
+
+        </div>
+
+        <div id="image-modal-overlay">
+            <div id="image-modal-content">
+                <button id="image-modal-close-btn">&times;</button> <img id="product-display-image" src="" alt="Product Image">
+            </div>
+        </div>
+        <script src="../js/database.js"></script>
+        <script src="../js/admin-login.js"></script>
+        <script src="../js/admin-main.js"></script>
+        <script src="../js/admin_user_function.js"></script>
+        <script src="../js/admin_product_detail.js"></script>
+        <script src="../js/admin_product_category.js"></script>
+        <script src="../js/admin_product_import.js"></script>
+        <script src="../js/admin_product_price.js"></script>
+        <script src="../js/admin_product_order.js"></script>
+        <script src="../js/admin_product_manage.js"></script>
+    </body>
+</html>
